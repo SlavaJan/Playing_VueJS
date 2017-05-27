@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue-app">
+        <h1>{{ name }}</h1>
+        <a v-bind:href="website" target="_blank">Vishvanatan.name</a>
+        <p>{{ greet("Heyo!") }}</p>
+        <input type="text" v-bind:value="name">
+        <p v-html="websiteTag"></p>
+        <hr>
+
+        <button @click="add(1)">Add a year</button>
+        <button @click="subtract(1)">Subtract a year</button>
+
+        <button @dblclick="add(10)">Add 10 years</button>
+        <button @dblclick="subtract(10)">Subtract 10 years</button>
+
+        <p>I'm: {{ age }}</p>
+
+        <div @mousemove="updateXY" id="canvas">{{x}}, {{y}}</div>
+        <hr>
+
+        <label>Name</label>
+        <input type="text" v-model="name">
+        <span>{{ name }}</span>
+        <br />
+        <label>Age</label>
+        <input type="text" v-model="age">
+        <span>{{ age }}</span>
+        <hr>
+        <div v-on:click="available = !available" v-bind:class="{available: available, nearby: nearby}">
+            <span>DeNiro</span>
+        </div>
+        <div v-bind:class="compClasses">
+            <button v-on:click="nearby = !nearby">Toggle nearby</button>
+            <button @click="available = !available">Toggle available</button>
+            <span>Jackie</span>
+        </div>
+
+        <button v-on:click="error = !error">Toggle error</button>
+        <button v-on:click="success = !success">Toggle success</button>
+        <!--p v-if="error">ERROR!!11</p>
+        <p v-else-if="success">That's OK!</p-->
+        
+        <p v-show="error">ERROR!!11</p>
+        <p v-show="success">That's OK!</p>
+        <hr>
+        <h3>Looping</h3>
+        <ul>
+            <li v-for="character in characters">{{ character }}</li>
+        </ul>
+
+        <template v-for="(ninja, index) in ninjas">
+            <p >{{ index }}. {{ ninja.name }}</p>
+            <p >Age: {{ninja.age}} years old.</p>
+        </template>
+        
+        <template v-for="ninja in ninjas">
+            <div v-for="(val,key) in ninja">
+                <p>{{ key }} - {{ val }}</p>
+            </div>
+        </template>
+        <hr>
+        <h2></h2>
+
+        
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="punchbag.css">
+    <script src="https://unpkg.com/vue"></script>
+    <title>Punchbag</title>
+</head>
+<body>
+    <div id="game">
+        <div v-bind:class="{ burst: ended }" @click="punch" id="bag">
+
+        </div>
+
+        <div id="bag-hp">
+            <div v-bind:style="{ width: hp + '%' }"></div>
+        </div>
+
+        <div id="controls">
+            <button @click="restart">Restart</button>
+        </div>
+    </div>
+    <script src="punchbag.js"></script>
+</body>
+</html>

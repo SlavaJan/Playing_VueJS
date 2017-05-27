@@ -1,0 +1,35 @@
+#bag {
+    width: 200px;
+    height: 500px;
+    margin: 0 auto;
+    background-image: url('img/bag.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 80%;
+    background-size: 80%;
+}
+
+#bag.burst {
+    background-image: url('img/bag-burst.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 80%;
+    background-size: 80%;
+}
+
+#bag-hp {
+    width: 200px;
+    border: 2px solid black;
+    margin: 0 auto 20px auto;
+}
+
+#bag-hp div {
+    height: 20px;
+    background-color: crimson;
+}
+
+#controls {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+}
