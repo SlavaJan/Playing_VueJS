@@ -29,7 +29,7 @@ new Vue ({
             this.age += num;
         },
         subtract: function (num) {
-            this.age -=num;
+            this.age -= num;
         },
         updateXY: function (event) {
             this.x = event.offsetX;
