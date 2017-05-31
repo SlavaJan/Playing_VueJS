@@ -26,10 +26,10 @@ new Vue ({
             return str + ' ' + this.name
         },
         add: function (num) {
-            this.age += num;
+            this.age += parseInt(num);
         },
         subtract: function (num) {
-            this.age -= num;
+            this.age -= parseInt(num);
         },
         updateXY: function (event) {
             this.x = event.offsetX;
