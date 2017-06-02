@@ -19,7 +19,11 @@ new Vue ({
             {name: 'Ken', age: 25},
             {name: 'Dan', age: 35},
             {name: 'Sakura', age: 15}
-        ]
+        ],
+        todos: [
+            { text: 'write my own todo-app', done: false }
+        ],
+        newItem: ''
     },
     methods: {
         greet: function (str) {
@@ -35,11 +39,12 @@ new Vue ({
             this.x = event.offsetX;
             this.y = event.offsetY;
         },
-        logName: function () {
-            
+        add: function (e) {
+            this.todos.push({text: this.newItem, done: false});
+            this.newItem = '';
         },
-        logAge: function () {
-            
+        remove: function (index) {
+            this.todos.splice(index, 1);
         }
     },
     computed: {

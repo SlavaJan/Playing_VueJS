@@ -69,8 +69,18 @@
             </div>
         </template>
         <hr>
-        <h2></h2>
-
+        <form v-for:submit.prevent="add">
+            <h4>TODO</h4>
+            <input type="text" v-model="newItem" placeholder="Add New Item"/>
+            <button v-on:click.prevent="add" type="submit">Add</button>
+        </form>
+        <ul>
+            <li v-bind:class="{'done': todo.done}" v-for="(todo, index) in todos">
+                <input  type="checkbox" v-model="todo.done" />&nbsp;
+                <span>{{ todo.text }}</span>&nbsp;&nbsp;
+                <button v-on:click="remove(index)">X</button>
+            </li>
+        </ul>
 
     </div>
     <script src="app.js"></script>

@@ -26,3 +26,12 @@ span {
     content: 'nearby';
     margin-left: 10px;
 }
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+li.done {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
