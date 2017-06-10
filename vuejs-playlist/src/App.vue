@@ -1,8 +1,8 @@
 <template>
   <div>
-    <app-header></app-header>
+    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
     <ninjas v-bind:ninjas="ninjas"></ninjas>
-    <app-footer></app-footer>
+    <app-footer v-bind:title="title"></app-footer>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   },
   data () {
     return {
-      title: 'Ninja app',
+      title: 'Vue Ninjas',
       ninjas: [
         {name: 'Ryu', speciality: 'Dragon kick', show: 'false'},
         {name: 'Ken', speciality: 'Dragon punch', show: 'false'},
@@ -28,6 +28,11 @@ export default {
         {name: 'Akuma', speciality: 'Demon strike', show: 'false'},
         {name: 'Gouken', speciality: 'God smash', show: 'false'}
       ]
+    }
+  },
+  methods: {
+    updateTitle: function (updatedTitle) {
+      this.title = updatedTitle;
     }
   }
 }
