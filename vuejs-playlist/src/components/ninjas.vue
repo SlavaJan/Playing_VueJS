@@ -28,24 +28,6 @@ export default {
     deleteNinja: function () {
       this.ninjas.pop();
     }
-  },
-  beforeCreate() {
-    alert('Before Create');
-  },
-  created() {
-    alert('Created');
-  },
-  beforeMount() {
-    alert('Before Mount');
-  },
-  mounted() {
-    alert ('Mounted');
-  },
-  beforeUpdate() {
-    alert('Before Update');
-  },
-  updated() {
-    alert('Updated');
   }
 }
 </script>
