@@ -1,7 +1,7 @@
 <template>
   <div id="add-blog">
     <h2>Add a New Blog Post</h2>
-    <form>
+    <form v-if="!submitted">
       <label for="blog-title">Blog title
         <input id="blog-title" type="text" v-model="blog.title" required>
       </label>
@@ -19,7 +19,11 @@
           <option v-for="author in authors">{{ author }}</option>
         </select>
       </label>
+      <button v-on:click.prevent="post" v-ripple>Submit post</button>
     </form>
+    <div v-if="submitted">
+      <h3>Thanks for posting!</h3>
+    </div>
     <h3>Your post preview</h3>
     <div id="preview">
       <p class="preview-title">{{ blog.title }}</p>
@@ -34,6 +38,7 @@
 </template>
 
 <script>
+import Axios from 'axios';
 export default {
   
   data () {
@@ -44,13 +49,31 @@ export default {
         categories: [],
         author: ''
       },
-      authors: ['Author 1', 'Author 2', 'Author 3']
+      authors: ['Author 1', 'Author 2', 'Author 3'],
+      submitted: false
+    }
+  },
+  methods: {
+    post: function () {
+      var that = this;
+      Axios.post('https://jsonplaceholder.typicode.com/posts', {
+        title: this.blog.title,
+        body: this.blog.content,
+        userId: '1'
+      })
+      .then(function (data) {
+        that.submitted = true;
+        console.log(data);
+      })
+      .catch(function (error) {
+        console.warn(error);
+      });
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
    * {
     box-sizing: border-box;
   }
@@ -98,5 +121,20 @@ export default {
     display: inline-block;
     user-select: none;
     -moz-user-select: none;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: lighten(green, 25%);
+    border: none;
+    outline: none;
+    transition: all 0.15s;
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
+    }
+    &:active {
+      transform: translate(0, 0);
+      box-shadow: none;
+    }
   }
 </style>
